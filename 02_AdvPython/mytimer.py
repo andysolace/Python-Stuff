@@ -15,7 +15,10 @@ start_time = None
 class MyTimer:
     
     _report_msg: str
-    
+
+    def __init__(self, report_msg: str = "Timer has ended."):
+        self._report_msg = report_msg
+            
     def __start_timer():
         """
         The start_timer() function marks the start of 
@@ -45,9 +48,6 @@ class MyTimer:
             format(txt, end_time-start_time))
             
         start_time = None
-
-    def __init__(self, report_msg: str = "Timer has ended."):
-        self._report_msg = report_msg
     
     def __enter__(self):
         self.__start_timer()
