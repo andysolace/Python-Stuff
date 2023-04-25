@@ -14,7 +14,6 @@ for n in range(0, len(nato)):
     else: 
         codes[string.ascii_uppercase[n - 10]] = nato[n]
 
-
 # This will use a keys[] array, zip() and dict().
 keys = []
 
@@ -36,3 +35,4 @@ for l in txt:
         print(' ')
     else:
         print(result)
+        
