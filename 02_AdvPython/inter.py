@@ -4,13 +4,21 @@ import sys
  
 def get_value(obj, *attr) -> str:
     
-    # print(sys._getframe(1).f_locals)
-    result: str
-    if obj in sys._getframe(1).f_locals: 
-        result = f'{sys._getframe(1).f_locals[obj]}'
-    elif obj in sys._getframe(1).f_globals:    
-        result = f'{sys._getframe(1).f_globals[obj]}'
-    return result
+    result: None
+    
+    obj_locals = sys._getframe(1).f_locals
+    obj_globals = sys._getframe(1).f_globals
+    
+    if obj in obj_locals: 
+        result = obj_locals[obj]
+    elif obj in obj_globals:    
+        result = obj_globals[obj]
+    
+    if result and attr:
+        return_value = eval(f'{obj}.{attr[0]}', obj_globals, obj_locals)
+        result = str(return_value)
+
+    return str(result)
    
 def trans(in_txt):
     
