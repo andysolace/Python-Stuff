@@ -14,7 +14,7 @@ start_time = None
 
 class MyTimer:
     
-    _report_msg = str
+    _report_msg: str
     
     def __start_timer():
         """
@@ -26,7 +26,7 @@ class MyTimer:
         utime, stime = os.times()[0:2]
         start_time = utime + stime
 
-    def __end_timer(txt = 'End time'):
+    def __end_timer(txt: str = _report_msg):
         """
         The end_timer() function completes a timed interval
         started by start_timer.  It prints an optional text
@@ -46,7 +46,7 @@ class MyTimer:
             
         start_time = None
 
-    def __init__(self, report_msg = str):
+    def __init__(self, report_msg: str = "Timer has ended."):
         self._report_msg = report_msg
     
     def __enter__(self):
